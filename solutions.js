@@ -56,15 +56,28 @@
 //   return num;
 // };
 
-var isPalindrome = function(head) {
-  function isPalindromeRecursive(recursiveHead) {
-    if (recursiveHead == null) {
-      return true;
+// var isPalindrome = function(head) {
+//   function isPalindromeRecursive(recursiveHead) {
+//     if (recursiveHead == null) {
+//       return true;
+//     }
+//     const next = isPalindromeRecursive(recursiveHead.next)
+//     const valid = recursiveHead.val === head.val;
+//     head = head.next;
+//     return next && valid
+//   }
+//   return isPalindromeRecursive(head)
+// };
+
+var canConstruct = function(ransomNote, magazine) {
+  let constructable = true
+  for (let i=0; i < ransomNote.length; i++) {
+    if (magazine.indexOf(ransomNote.charAt(i)) >= 0) {
+      magazine = magazine.replace(ransomNote.charAt(i), '')
+    } else {
+      constructable = false;
     }
-    const next = isPalindromeRecursive(recursiveHead.next)
-    const valid = recursiveHead.val === head.val;
-    head = head.next;
-    return next && valid
   }
-  return isPalindromeRecursive(head)
+  return constructable;
 };
+
