@@ -36,23 +36,35 @@
 //   return stack.length === 0;
 // };
 
-var romanToInt = function(s) {
-  let romanMap = new Map();
-  romanMap.set('I', 1)
-  romanMap.set('V', 5)
-  romanMap.set('X', 10)
-  romanMap.set('L', 50)
-  romanMap.set('C', 100)
-  romanMap.set('D', 500)
-  romanMap.set('M', 1000)
-  let num = romanMap.get(s[s.length-1]);
-  for(let i=s.length-2; i >= 0; i--) {
-    if (romanMap.get(s[i]) >= romanMap.get(s[i+1])) {
-      num += romanMap.get(s[i])
-    } else {
-      num -= romanMap.get(s[i])
-    }
-  }
-  return num;
-};
+// var romanToInt = function(s) {
+//   let romanMap = new Map();
+//   romanMap.set('I', 1)
+//   romanMap.set('V', 5)
+//   romanMap.set('X', 10)
+//   romanMap.set('L', 50)
+//   romanMap.set('C', 100)
+//   romanMap.set('D', 500)
+//   romanMap.set('M', 1000)
+//   let num = romanMap.get(s[s.length-1]);
+//   for(let i=s.length-2; i >= 0; i--) {
+//     if (romanMap.get(s[i]) >= romanMap.get(s[i+1])) {
+//       num += romanMap.get(s[i])
+//     } else {
+//       num -= romanMap.get(s[i])
+//     }
+//   }
+//   return num;
+// };
 
+var isPalindrome = function(head) {
+  function isPalindromeRecursive(recursiveHead) {
+    if (recursiveHead == null) {
+      return true;
+    }
+    const next = isPalindromeRecursive(recursiveHead.next)
+    const valid = recursiveHead.val === head.val;
+    head = head.next;
+    return next && valid
+  }
+  return isPalindromeRecursive(head)
+};
