@@ -69,15 +69,33 @@
 //   return isPalindromeRecursive(head)
 // };
 
-var canConstruct = function(ransomNote, magazine) {
-  let constructable = true
-  for (let i=0; i < ransomNote.length; i++) {
-    if (magazine.indexOf(ransomNote.charAt(i)) >= 0) {
-      magazine = magazine.replace(ransomNote.charAt(i), '')
+// var canConstruct = function(ransomNote, magazine) {
+//   let constructable = true
+//   for (let i=0; i < ransomNote.length; i++) {
+//     if (magazine.indexOf(ransomNote.charAt(i)) >= 0) {
+//       magazine = magazine.replace(ransomNote.charAt(i), '')
+//     } else {
+//       constructable = false;
+//     }
+//   }
+//   return constructable;
+// };
+
+var fizzBuzz = function(n) {
+  let output = []
+  for (let i=1; i<=n; i++) {
+    if (i % 3 === 0 && i % 5 ===0) {
+      output.push("FizzBuzz")
+    } else if (i % 3 === 0) {
+      output.push("Fizz")
+    } else if (i % 5 === 0) {
+      output.push("Buzz")
     } else {
-      constructable = false;
+      output.push(i.toString())
     }
   }
-  return constructable;
+  return output;
 };
+
+
 
