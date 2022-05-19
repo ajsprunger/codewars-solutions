@@ -97,13 +97,25 @@
 //   return output;
 // };
 
-var middleNode = function(head) {
-  let fast = head
-  let slow = head
+// var middleNode = function(head) {
+//   let fast = head
+//   let slow = head
   
-  while (fast && fast.next) {
-    slow = slow.next
-    fast = fast.next.next
-  }
-  return slow;
+//   while (fast && fast.next) {
+//     slow = slow.next
+//     fast = fast.next.next
+//   }
+//   return slow;
+// };
+
+var kWeakestRows = function(mat, k) {
+  let kWeakest = []
+  mat.forEach((arr, idx) => {
+    kWeakest.push([arr.reduce((sum, a) => sum + a, 0), idx])
+  })
+  kWeakest.sort(function(a, b) {
+    return a[0] - b[0]
+  })
+  return kWeakest.slice(0, k).map(arr => arr[1])
 };
+
