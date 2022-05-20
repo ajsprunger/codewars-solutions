@@ -134,14 +134,28 @@
 //   return steps;
 // };
 
-var maximumWealth = function(accounts) {
-  max=0
-  accounts.forEach(function(el) {
-    wealth=el.reduce((a, b) => a + b)
-    if(wealth>max) {
-      max=wealth
-    }
-  })
-  return max
-};
+// var maximumWealth = function(accounts) {
+//   max=0
+//   accounts.forEach(function(el) {
+//     wealth=el.reduce((a, b) => a + b)
+//     if(wealth>max) {
+//       max=wealth
+//     }
+//   })
+//   return max
+// };
+
+// O(n^2)
+
+// var twoSum = function(nums, target) {
+//   let result = []
+//   for(let i=0; i<nums.length; i++) {
+//     for(let j=i+1; j<nums.length; j++) {
+//       if(nums[i] + nums[j] === target) {
+//         result.push(i, j)
+//       }
+//     }
+//   }
+//   return result;
+// };
 
