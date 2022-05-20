@@ -119,18 +119,29 @@
 //   return kWeakest.slice(0, k).map(arr => arr[1])
 // };
 
-var numberOfSteps = function(num) {
-  let steps = 0
-  while (num > 0) {
-    console.log(num)
-    if (num % 2 == 0) {
-      num = num/2
-      steps++
-    } else {
-      num = num-1
-      steps++
+// var numberOfSteps = function(num) {
+//   let steps = 0
+//   while (num > 0) {
+//     console.log(num)
+//     if (num % 2 == 0) {
+//       num = num/2
+//       steps++
+//     } else {
+//       num = num-1
+//       steps++
+//     }
+//   }
+//   return steps;
+// };
+
+var maximumWealth = function(accounts) {
+  max=0
+  accounts.forEach(function(el) {
+    wealth=el.reduce((a, b) => a + b)
+    if(wealth>max) {
+      max=wealth
     }
-  }
-  return steps;
+  })
+  return max
 };
 
