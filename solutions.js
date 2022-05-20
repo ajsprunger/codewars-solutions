@@ -108,14 +108,29 @@
 //   return slow;
 // };
 
-var kWeakestRows = function(mat, k) {
-  let kWeakest = []
-  mat.forEach((arr, idx) => {
-    kWeakest.push([arr.reduce((sum, a) => sum + a, 0), idx])
-  })
-  kWeakest.sort(function(a, b) {
-    return a[0] - b[0]
-  })
-  return kWeakest.slice(0, k).map(arr => arr[1])
+// var kWeakestRows = function(mat, k) {
+//   let kWeakest = []
+//   mat.forEach((arr, idx) => {
+//     kWeakest.push([arr.reduce((sum, a) => sum + a, 0), idx])
+//   })
+//   kWeakest.sort(function(a, b) {
+//     return a[0] - b[0]
+//   })
+//   return kWeakest.slice(0, k).map(arr => arr[1])
+// };
+
+var numberOfSteps = function(num) {
+  let steps = 0
+  while (num > 0) {
+    console.log(num)
+    if (num % 2 == 0) {
+      num = num/2
+      steps++
+    } else {
+      num = num-1
+      steps++
+    }
+  }
+  return steps;
 };
 
