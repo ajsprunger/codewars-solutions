@@ -173,9 +173,15 @@
 //   return null;
 // }
 
-var isPalindrome = function(x) {
-  let arr = x.split('')
-  let reverse = arr.reverse()
-  return x.toString() === reverse.join('')
+// var isPalindrome = function(x) {
+//   let arr = x.split('')
+//   let reverse = arr.reverse()
+//   return x.toString() === reverse.join('')
+// };
+
+var longestCommonPrefix = function(strs) {
+  let i=0
+  while(strs[0][i] && strs.every(w => w[i] === strs[0][i])) i++;
+  return strs[0].substring(0, i);
 };
 
