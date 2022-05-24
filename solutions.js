@@ -256,12 +256,22 @@
 //   return -1
 // };
 
-var searchInsert = function(nums, target) {
-  if(target<=nums[0]) return 0
-  for (let i=0; i<nums.length; i++) {
-    if(nums[i]<target && (nums[i+1]>=target || nums[i+1] == null)) {
-      return i+1
-    }
+// var searchInsert = function(nums, target) {
+//   if(target<=nums[0]) return 0
+//   for (let i=0; i<nums.length; i++) {
+//     if(nums[i]<target && (nums[i+1]>=target || nums[i+1] == null)) {
+//       return i+1
+//     }
+//   }
+// };
+
+var maxSubArray = function(nums) {
+  let max = nums[0]
+  let curr = nums[0]
+  for(let i=1; i<nums.length; i++) {
+    curr = Math.max(nums[i], curr+nums[i])
+    max = Math.max(max, curr)
   }
+  return max;
 };
 
