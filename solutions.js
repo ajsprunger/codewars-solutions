@@ -216,13 +216,42 @@
 // return dummyHead.next
 // }
 
-var removeDuplicates = function(nums) {
-  for(let i=0; i<nums.length; i++) {
-    if(nums[i] === nums[i+1]) {
-      nums.splice(i, 1)
-      i--
-    }
-  }
-  return nums.length
-};
+// var removeDuplicates = function(nums) {
+//   for(let i=0; i<nums.length; i++) {
+//     if(nums[i] === nums[i+1]) {
+//       nums.splice(i, 1)
+//       i--
+//     }
+//   }
+//   return nums.length
+// };
 
+// var removeElement = function(nums, val) {
+//   for(let i=0; i<nums.length; i++) {
+//     if(nums[i] === val) {
+//       nums.splice(i, 1)
+//       i--
+//     }
+//   }
+//   return nums.length;
+// };
+
+// Faster Solution
+
+// var removeElement = function(nums, val) {
+//   var len = nums.length;
+//   var count = 0;
+//   for (var i = 0; i < len; i++) {
+//     if (nums[i] !== val) nums[count++] = nums[i];
+//   }
+//   return nums;
+// };
+
+var strStr = function(haystack, needle) {
+  if (needle.length === 0) return 0;
+  if (needle === haystack) return 0;
+  for (let i = 0; i <= haystack.length - needle.length; i++) {
+    if (needle === haystack.substring(i, i+needle.length)) return i
+  }
+  return -1
+};
