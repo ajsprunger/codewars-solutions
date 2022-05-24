@@ -265,13 +265,21 @@
 //   }
 // };
 
-var maxSubArray = function(nums) {
-  let max = nums[0]
-  let curr = nums[0]
-  for(let i=1; i<nums.length; i++) {
-    curr = Math.max(nums[i], curr+nums[i])
-    max = Math.max(max, curr)
-  }
-  return max;
-};
+// var maxSubArray = function(nums) {
+//   let max = nums[0]
+//   let curr = nums[0]
+//   for(let i=1; i<nums.length; i++) {
+//     curr = Math.max(nums[i], curr+nums[i])
+//     max = Math.max(max, curr)
+//   }
+//   return max;
+// };
 
+var lengthOfLastWord = function(s) {
+  let arr = s.split(' ')
+  for (let i=arr.length-1; i>=0; i--){
+    if(arr[i].length) {
+      return arr[i].length
+    }
+  }
+};
