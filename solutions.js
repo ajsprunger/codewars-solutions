@@ -275,11 +275,36 @@
 //   return max;
 // };
 
-var lengthOfLastWord = function(s) {
-  let arr = s.split(' ')
-  for (let i=arr.length-1; i>=0; i--){
-    if(arr[i].length) {
-      return arr[i].length
+// var lengthOfLastWord = function(s) {
+//   let arr = s.split(' ')
+//   for (let i=arr.length-1; i>=0; i--){
+//     if(arr[i].length) {
+//       return arr[i].length
+//     }
+//   }
+// };
+
+var plusOne = function(digits) {
+  let last = digits[digits.length-1]
+  let count = digits.length-1
+  let rollover = function(num) {
+    digits[count] = 0
+    count--
+    if(digits[count] === 9){
+      return rollover(digits[count])
+    } 
+    if(!digits[count]){
+      digits.unshift(1)
+    }
+    else {
+      digits[count]++
     }
   }
+  if(last !== 9) {
+    digits[digits.length-1]++
+  } else {
+    rollover(last)
+  }
+  return digits
 };
+
