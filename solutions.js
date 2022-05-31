@@ -330,12 +330,24 @@
 //   return y-1
 // };
 
-var climbStairs = function(n) {
-  let arr = [1, 1]
-  if (n>1){
-    for(let i=2; i<=n; i++) {
-      arr[i] = arr[i-1] + arr[i-2]
+// var climbStairs = function(n) {
+//   let arr = [1, 1]
+//   if (n>1){
+//     for(let i=2; i<=n; i++) {
+//       arr[i] = arr[i-1] + arr[i-2]
+//     }
+//   }
+//   return arr[arr.length-1]
+// };
+
+var deleteDuplicates = function(head) {
+  let current = head
+  while(current !== null && current.next !== null) {
+    if (current.val === current.next.val) {
+      current.next = current.next.next
+    } else {
+    current = current.next
     }
   }
-  return arr[arr.length-1]
+  return head
 };
