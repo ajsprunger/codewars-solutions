@@ -322,11 +322,20 @@
 //   return res;
 // };
 
-var mySqrt = function(x) {
-  let y = 1
-  while(y*y <= x){
-    y++
-  }
-  return y-1
-};
+// var mySqrt = function(x) {
+//   let y = 1
+//   while(y*y <= x){
+//     y++
+//   }
+//   return y-1
+// };
 
+var climbStairs = function(n) {
+  let arr = [1, 1]
+  if (n>1){
+    for(let i=2; i<=n; i++) {
+      arr[i] = arr[i-1] + arr[i-2]
+    }
+  }
+  return arr[arr.length-1]
+};
