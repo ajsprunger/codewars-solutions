@@ -284,27 +284,41 @@
 //   }
 // };
 
-var plusOne = function(digits) {
-  let last = digits[digits.length-1]
-  let count = digits.length-1
-  let rollover = function(num) {
-    digits[count] = 0
-    count--
-    if(digits[count] === 9){
-      return rollover(digits[count])
-    } 
-    if(!digits[count]){
-      digits.unshift(1)
-    }
-    else {
-      digits[count]++
-    }
+// var plusOne = function(digits) {
+//   let last = digits[digits.length-1]
+//   let count = digits.length-1
+//   let rollover = function(num) {
+//     digits[count] = 0
+//     count--
+//     if(digits[count] === 9){
+//       return rollover(digits[count])
+//     } 
+//     if(!digits[count]){
+//       digits.unshift(1)
+//     }
+//     else {
+//       digits[count]++
+//     }
+//   }
+//   if(last !== 9) {
+//     digits[digits.length-1]++
+//   } else {
+//     rollover(last)
+//   }
+//   return digits
+// };
+
+var addBinary = function(a, b) {
+  let res = ''
+  let carry = 0
+  let val = 0
+  let max = Math.max(a.length, b.length)
+  for(let i=0; i<max; i++) {
+    val = Number(a[a.length - 1 - i] || 0) + Number(b[b.length - 1 - i] || 0) + carry;
+    carry = Math.floor(val/2);
+    res = (val % 2) + res
   }
-  if(last !== 9) {
-    digits[digits.length-1]++
-  } else {
-    rollover(last)
-  }
-  return digits
+  if(carry) res = 1 + res;
+  return res;
 };
 
