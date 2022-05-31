@@ -308,17 +308,25 @@
 //   return digits
 // };
 
-var addBinary = function(a, b) {
-  let res = ''
-  let carry = 0
-  let val = 0
-  let max = Math.max(a.length, b.length)
-  for(let i=0; i<max; i++) {
-    val = Number(a[a.length - 1 - i] || 0) + Number(b[b.length - 1 - i] || 0) + carry;
-    carry = Math.floor(val/2);
-    res = (val % 2) + res
+// var addBinary = function(a, b) {
+//   let res = ''
+//   let carry = 0
+//   let val = 0
+//   let max = Math.max(a.length, b.length)
+//   for(let i=0; i<max; i++) {
+//     val = Number(a[a.length - 1 - i] || 0) + Number(b[b.length - 1 - i] || 0) + carry;
+//     carry = Math.floor(val/2);
+//     res = (val % 2) + res
+//   }
+//   if(carry) res = 1 + res;
+//   return res;
+// };
+
+var mySqrt = function(x) {
+  let y = 1
+  while(y*y <= x){
+    y++
   }
-  if(carry) res = 1 + res;
-  return res;
+  return y-1
 };
 
