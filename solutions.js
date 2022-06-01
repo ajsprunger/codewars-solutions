@@ -340,14 +340,30 @@
 //   return arr[arr.length-1]
 // };
 
-var deleteDuplicates = function(head) {
-  let current = head
-  while(current !== null && current.next !== null) {
-    if (current.val === current.next.val) {
-      current.next = current.next.next
-    } else {
-    current = current.next
-    }
+// var deleteDuplicates = function(head) {
+//   let current = head
+//   while(current !== null && current.next !== null) {
+//     if (current.val === current.next.val) {
+//       current.next = current.next.next
+//     } else {
+//     current = current.next
+//     }
+//   }
+//   return head
+// };
+
+function merge(nums1, m, nums2, n){
+  while(n > 0) {
+      if(nums1[m-1] >nums2[n-1]) {
+          nums1[m+n-1] = nums1[m-1];
+          m--;
+          console.log(nums1)
+      }
+      else {
+          nums1[m+n-1] = nums2[n-1];
+          n--;
+          console.log(nums1)
+      }
   }
-  return head
 };
+
