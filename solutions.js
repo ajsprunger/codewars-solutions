@@ -352,18 +352,30 @@
 //   return head
 // };
 
-function merge(nums1, m, nums2, n){
-  while(n > 0) {
-      if(nums1[m-1] >nums2[n-1]) {
-          nums1[m+n-1] = nums1[m-1];
-          m--;
-          console.log(nums1)
-      }
-      else {
-          nums1[m+n-1] = nums2[n-1];
-          n--;
-          console.log(nums1)
-      }
+// function merge(nums1, m, nums2, n){
+//   while(n > 0) {
+//       if(nums1[m-1] >nums2[n-1]) {
+//           nums1[m+n-1] = nums1[m-1];
+//           m--;
+//           console.log(nums1)
+//       }
+//       else {
+//           nums1[m+n-1] = nums2[n-1];
+//           n--;
+//           console.log(nums1)
+//       }
+//   }
+// };
+
+var inorderTraversal = function(root) {
+  let res = [];
+
+  return traverse(root, res);
+
+  function traverse(root, res) {
+    if(root === null) return res;
+    res = traverse(root.left, res);
+    res.push(root.val)
+    return traverse(root.right, res)
   }
 };
-
