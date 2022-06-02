@@ -367,15 +367,22 @@
 //   }
 // };
 
-var inorderTraversal = function(root) {
-  let res = [];
+// var inorderTraversal = function(root) {
+//   let res = [];
 
-  return traverse(root, res);
+//   return traverse(root, res);
 
-  function traverse(root, res) {
-    if(root === null) return res;
-    res = traverse(root.left, res);
-    res.push(root.val)
-    return traverse(root.right, res)
-  }
+//   function traverse(root, res) {
+//     if(root === null) return res;
+//     res = traverse(root.left, res);
+//     res.push(root.val)
+//     return traverse(root.right, res)
+//   }
+// };
+
+
+var isSameTree = function(p, q) {
+  if(p === null || q === null) return (p === q)
+  return ((p.val === q.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
 };
+
