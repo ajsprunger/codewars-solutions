@@ -381,8 +381,17 @@
 // };
 
 
-var isSameTree = function(p, q) {
-  if(p === null || q === null) return (p === q)
-  return ((p.val === q.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
-};
+// var isSameTree = function(p, q) {
+//   if(p === null || q === null) return (p === q)
+//   return ((p.val === q.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
+// };
 
+var isSymmetric = function(root) {
+  return symmetric(root, root)
+
+  function symmetric(left, right) {
+    if (left === null && right === null) return true;
+    if (left === null || right === null) return false;
+    return (left.val === right.val) && symmetric(left.right, right.left) && symmetric(left.left, right.right)
+  }
+};
