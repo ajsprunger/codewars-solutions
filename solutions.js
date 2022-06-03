@@ -400,13 +400,25 @@
 //   return !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 // };
 
+// var singleNumber = function(nums) {
+//   let res
+//   nums.forEach((element, idx) => {
+//     nums.splice(idx, 1)
+//     if(!nums.includes(element)) res = element 
+//     else nums.splice(idx, 0, element)
+//   });
+//   return res
+// };
+
+// Alternate (BETTER) solution
+
 var singleNumber = function(nums) {
   let res
-  nums.forEach((element, idx) => {
-    nums.splice(idx, 1)
-    if(!nums.includes(element)) res = element 
-    else nums.splice(idx, 0, element)
+  nums.forEach(element => {
+    res = res ^ element
+    console.log(res)
   });
   return res
 };
 
+singleNumber([4,1,2,1,2])
