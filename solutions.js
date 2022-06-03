@@ -386,12 +386,17 @@
 //   return ((p.val === q.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
 // };
 
-var isSymmetric = function(root) {
-  return symmetric(root, root)
+// var isSymmetric = function(root) {
+//   return symmetric(root, root)
 
-  function symmetric(left, right) {
-    if (left === null && right === null) return true;
-    if (left === null || right === null) return false;
-    return (left.val === right.val) && symmetric(left.right, right.left) && symmetric(left.left, right.right)
-  }
+//   function symmetric(left, right) {
+//     if (left === null && right === null) return true;
+//     if (left === null || right === null) return false;
+//     return (left.val === right.val) && symmetric(left.right, right.left) && symmetric(left.left, right.right)
+//   }
+// };
+
+var maxDepth = function(root) {
+  return !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 };
+
