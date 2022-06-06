@@ -421,21 +421,49 @@
 //   return res
 // };
 
-var maxProfit = function(prices) {
-  let profit = 0
-  let buy = prices[0]
-  for(let i=1; i<prices.length; i++) {
-    if(prices[i]-buy > profit) {
-      profit = prices[i]-buy
+// var maxProfit = function(prices) {
+//   let profit = 0
+//   let buy = prices[0]
+//   for(let i=1; i<prices.length; i++) {
+//     if(prices[i]-buy > profit) {
+//       profit = prices[i]-buy
+//     }
+//     if(prices[i] < buy) {
+//       buy = prices[i]
+//     }
+//   }
+//   if(profit <= 0) {
+//     return 0
+//   } else {
+//   return profit
+//   }
+// };
+
+// var majorityElement = function(nums) {
+//   let majority = (nums.length)/2
+//   let counts = {}
+//   for(let num of nums) {
+//     counts[num] = counts[num] ? counts[num] + 1 : 1;
+//     if(counts[num] > majority) {
+//       return num;
+//     }
+//   }
+// };
+
+var majorityElement = function(nums) {
+  let majority = 0
+  let count = 1
+  for(let i=1; i<nums.length; i++) {
+    if (nums[i] === nums[majority]) {
+      count++
+    } else {
+      count--
     }
-    if(prices[i] < buy) {
-      buy = prices[i]
+    if(count === 0) {
+      majority = i
+      count = 1
     }
   }
-  if(profit <= 0) {
-    return 0
-  } else {
-  return profit
-  }
+  return nums[majority];
 };
 
