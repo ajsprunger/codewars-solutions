@@ -410,15 +410,32 @@
 //   return res
 // };
 
-// Alternate (BETTER) solution
+// Alternate (XOR/BETTER) solution
 
-var singleNumber = function(nums) {
-  let res
-  nums.forEach(element => {
-    res = res ^ element
-    console.log(res)
-  });
-  return res
+// var singleNumber = function(nums) {
+//   let res
+//   nums.forEach(element => {
+//     res = res ^ element
+//     console.log(res)
+//   });
+//   return res
+// };
+
+var maxProfit = function(prices) {
+  let profit = 0
+  let buy = prices[0]
+  for(let i=1; i<prices.length; i++) {
+    if(prices[i]-buy > profit) {
+      profit = prices[i]-buy
+    }
+    if(prices[i] < buy) {
+      buy = prices[i]
+    }
+  }
+  if(profit <= 0) {
+    return 0
+  } else {
+  return profit
+  }
 };
 
-singleNumber([4,1,2,1,2])
