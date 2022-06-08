@@ -450,20 +450,33 @@
 //   }
 // };
 
-var majorityElement = function(nums) {
-  let majority = 0
-  let count = 1
-  for(let i=1; i<nums.length; i++) {
-    if (nums[i] === nums[majority]) {
-      count++
-    } else {
-      count--
-    }
-    if(count === 0) {
-      majority = i
-      count = 1
-    }
+// var majorityElement = function(nums) {
+//   let majority = 0
+//   let count = 1
+//   for(let i=1; i<nums.length; i++) {
+//     if (nums[i] === nums[majority]) {
+//       count++
+//     } else {
+//       count--
+//     }
+//     if(count === 0) {
+//       majority = i
+//       count = 1
+//     }
+//   }
+//   return nums[majority];
+// };
+
+var titleToNumber = function(columnTitle) {
+  let getNum = function(letter) {
+    return letter.charCodeAt(0) - 64
   }
-  return nums[majority];
+  let output = 0
+  let counter = columnTitle.length - 1
+  for(let i = 0; i < columnTitle.length; i++) {
+    output = output + (getNum(columnTitle[i]) * (26 ** counter))
+    counter--
+  }
+  return output
 };
 
