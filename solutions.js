@@ -467,16 +467,20 @@
 //   return nums[majority];
 // };
 
-var titleToNumber = function(columnTitle) {
-  let getNum = function(letter) {
-    return letter.charCodeAt(0) - 64
-  }
-  let output = 0
-  let counter = columnTitle.length - 1
-  for(let i = 0; i < columnTitle.length; i++) {
-    output = output + (getNum(columnTitle[i]) * (26 ** counter))
-    counter--
-  }
-  return output
-};
+// var titleToNumber = function(columnTitle) {
+//   let getNum = function(letter) {
+//     return letter.charCodeAt(0) - 64
+//   }
+//   let output = 0
+//   let counter = columnTitle.length - 1
+//   for(let i = 0; i < columnTitle.length; i++) {
+//     output = output + (getNum(columnTitle[i]) * (26 ** counter))
+//     counter--
+//   }
+//   return output
+// };
 
+var reverseBits = function(n) {
+  let reversedArr = n.toString(2).padStart(32, "0").split("").reverse()
+  return parseInt(reversedArr.join(""), 2)
+};
