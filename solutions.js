@@ -480,7 +480,19 @@
 //   return output
 // };
 
-var reverseBits = function(n) {
-  let reversedArr = n.toString(2).padStart(32, "0").split("").reverse()
-  return parseInt(reversedArr.join(""), 2)
+// var reverseBits = function(n) {
+//   let reversedArr = n.toString(2).padStart(32, "0").split("").reverse()
+//   return parseInt(reversedArr.join(""), 2)
+// };
+
+var hammingWeight = function(n) {
+  let count = 0
+  let arr = n.toString(2).split('');
+  for(i = 0; i < arr.length; i++) {
+    if(arr[i] == "1") {
+      count++
+    }
+  }
+  return count
 };
+
