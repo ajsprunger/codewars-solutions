@@ -496,21 +496,37 @@
 //   return count
 // };
 
-var isHappy = function(n) {
-  let prev = []
-  let recursive = function(n) {
-    let arr = n.toString().split('')
-    let total = 0
-    if(prev.includes(n)) {
+// var isHappy = function(n) {
+//   let prev = []
+//   let recursive = function(n) {
+//     let arr = n.toString().split('')
+//     let total = 0
+//     if(prev.includes(n)) {
+//       return false
+//     }
+//     prev.push(n)
+//     arr.forEach(el => 
+//       total = el**2 + total
+//       ) 
+//     if(total === 1) return true;
+//     else return recursive(total)
+//   }
+//   return recursive(n)
+// };
+
+var isIsomorphic = function(s, t) {
+  let pairsS = {}
+  let pairsT = {}
+  for(let i=0; i<s.length; i++) {
+    if(!pairsS[s[i]] && !pairsT[t[i]]) {
+      pairsS[s[i]] = t[i]
+      pairsT[t[i]] = s[i]
+    }
+    if(pairsS[s[i]] !== t[i] || pairsT[t[i]] !== s[i]) {
       return false
     }
-    prev.push(n)
-    arr.forEach(el => 
-      total = el**2 + total
-      ) 
-    if(total === 1) return true;
-    else return recursive(total)
   }
-  return recursive(n)
+  return true;
 };
 
+console.log(isIsomorphic("badc", "baba"))
