@@ -485,14 +485,32 @@
 //   return parseInt(reversedArr.join(""), 2)
 // };
 
-var hammingWeight = function(n) {
-  let count = 0
-  let arr = n.toString(2).split('');
-  for(i = 0; i < arr.length; i++) {
-    if(arr[i] == "1") {
-      count++
+// var hammingWeight = function(n) {
+//   let count = 0
+//   let arr = n.toString(2).split('');
+//   for(i = 0; i < arr.length; i++) {
+//     if(arr[i] == "1") {
+//       count++
+//     }
+//   }
+//   return count
+// };
+
+var isHappy = function(n) {
+  let prev = []
+  let recursive = function(n) {
+    let arr = n.toString().split('')
+    let total = 0
+    if(prev.includes(n)) {
+      return false
     }
+    prev.push(n)
+    arr.forEach(el => 
+      total = el**2 + total
+      ) 
+    if(total === 1) return true;
+    else return recursive(total)
   }
-  return count
+  return recursive(n)
 };
 
