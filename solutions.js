@@ -514,19 +514,40 @@
 //   return recursive(n)
 // };
 
-var isIsomorphic = function(s, t) {
-  let pairsS = {}
-  let pairsT = {}
-  for(let i=0; i<s.length; i++) {
-    if(!pairsS[s[i]] && !pairsT[t[i]]) {
-      pairsS[s[i]] = t[i]
-      pairsT[t[i]] = s[i]
-    }
-    if(pairsS[s[i]] !== t[i] || pairsT[t[i]] !== s[i]) {
-      return false
+// var isIsomorphic = function(s, t) {
+//   let pairsS = {}
+//   let pairsT = {}
+//   for(let i=0; i<s.length; i++) {
+//     if(!pairsS[s[i]] && !pairsT[t[i]]) {
+//       pairsS[s[i]] = t[i]
+//       pairsT[t[i]] = s[i]
+//     }
+//     if(pairsS[s[i]] !== t[i] || pairsT[t[i]] !== s[i]) {
+//       return false
+//     }
+//   }
+//   return true;
+// };
+
+var containsDuplicate = function(nums) {
+  for(let i=0; i<nums.length-1; i++) {
+    if(nums.includes(nums[i], i+1)) {
+      return true
     }
   }
-  return true;
+  return false
 };
 
-console.log(isIsomorphic("badc", "baba"))
+var containsDuplicate = function(nums) {
+  const set = new Set([...nums]);
+  return set.size != nums.length
+};
+
+var containsDuplicate = function(nums) {
+  const map = new Map();
+  for(let i=0; i<nums.length; i++) {
+    if (map.has(nums[i])) return true;
+    else map.set(nums[i], true)
+  }
+  return false;
+};
