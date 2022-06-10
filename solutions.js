@@ -529,25 +529,38 @@
 //   return true;
 // };
 
-var containsDuplicate = function(nums) {
-  for(let i=0; i<nums.length-1; i++) {
-    if(nums.includes(nums[i], i+1)) {
-      return true
-    }
-  }
-  return false
-};
+// var containsDuplicate = function(nums) {
+//   for(let i=0; i<nums.length-1; i++) {
+//     if(nums.includes(nums[i], i+1)) {
+//       return true
+//     }
+//   }
+//   return false
+// };
 
-var containsDuplicate = function(nums) {
-  const set = new Set([...nums]);
-  return set.size != nums.length
-};
+// var containsDuplicate = function(nums) {
+//   const set = new Set([...nums]);
+//   return set.size != nums.length
+// };
 
-var containsDuplicate = function(nums) {
+// var containsDuplicate = function(nums) {
+//   const map = new Map();
+//   for(let i=0; i<nums.length; i++) {
+//     if (map.has(nums[i])) return true;
+//     else map.set(nums[i], true)
+//   }
+//   return false;
+// };
+
+var containsNearbyDuplicate = function(nums, k) {
   const map = new Map();
   for(let i=0; i<nums.length; i++) {
-    if (map.has(nums[i])) return true;
-    else map.set(nums[i], true)
+    if (map.has(nums[i])) {
+      let j = map.get(nums[i])
+      if(Math.abs(i - j) <= k) return true
+    }
+    map.set(nums[i], i)
   }
   return false;
 };
+
