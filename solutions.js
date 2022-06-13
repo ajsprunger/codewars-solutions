@@ -552,15 +552,81 @@
 //   return false;
 // };
 
-var containsNearbyDuplicate = function(nums, k) {
-  const map = new Map();
-  for(let i=0; i<nums.length; i++) {
-    if (map.has(nums[i])) {
-      let j = map.get(nums[i])
-      if(Math.abs(i - j) <= k) return true
-    }
-    map.set(nums[i], i)
+// var containsNearbyDuplicate = function(nums, k) {
+//   const map = new Map();
+//   for(let i=0; i<nums.length; i++) {
+//     if (map.has(nums[i])) {
+//       let j = map.get(nums[i])
+//       if(Math.abs(i - j) <= k) return true
+//     }
+//     map.set(nums[i], i)
+//   }
+//   return false;
+// };
+
+class MyStack {
+  constructor() {
+    this.q1 = []
+    this.q2 = []
   }
-  return false;
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function(x) {
+  if(this.q1.length > 0) {
+    this.q1.push(x);
+  } else {
+    this.q2.push(x)
+  }
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function() {
+  if(this.q1.length === 0 && this.q2.length === 0) {
+    return null
+  }
+  if(this.q1.length > 0) {
+    while(this.q1.length > 1) {
+      var elem = this.q1.shift();
+      this.q2.push(elem)
+    }
+    return this.q1.shift();
+  } else {
+    while(this.q2.length > 1) {
+      var elem = this.q2.shift();
+      this.q1.push(elem)
+    }
+    return this.q2.shift()
+  }
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function() {
+  if(this.q1.length === 0 && this.q2.length === 0) {
+    return null
+  }
+  if(this.q1.length > 0) {
+    var elem = this.pop()
+    this.q2.push(elem)
+    return elem
+  } else {
+    var elem = this.pop();
+    this.q1.push(elem)
+    return elem
+  }
+};
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function() {
+  return this.q1.length === 0 && this.q2.length === 0
 };
 
