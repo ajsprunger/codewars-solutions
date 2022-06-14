@@ -564,69 +564,92 @@
 //   return false;
 // };
 
-class MyStack {
-  constructor() {
-    this.q1 = []
-    this.q2 = []
-  }
-};
+// class MyStack {
+//   constructor() {
+//     this.q1 = []
+//     this.q2 = []
+//   }
+// };
 
-/** 
- * @param {number} x
- * @return {void}
- */
-MyStack.prototype.push = function(x) {
-  if(this.q1.length > 0) {
-    this.q1.push(x);
-  } else {
-    this.q2.push(x)
-  }
-};
+// /** 
+//  * @param {number} x
+//  * @return {void}
+//  */
+// MyStack.prototype.push = function(x) {
+//   if(this.q1.length > 0) {
+//     this.q1.push(x);
+//   } else {
+//     this.q2.push(x)
+//   }
+// };
 
-/**
- * @return {number}
- */
-MyStack.prototype.pop = function() {
-  if(this.q1.length === 0 && this.q2.length === 0) {
-    return null
-  }
-  if(this.q1.length > 0) {
-    while(this.q1.length > 1) {
-      var elem = this.q1.shift();
-      this.q2.push(elem)
+// /**
+//  * @return {number}
+//  */
+// MyStack.prototype.pop = function() {
+//   if(this.q1.length === 0 && this.q2.length === 0) {
+//     return null
+//   }
+//   if(this.q1.length > 0) {
+//     while(this.q1.length > 1) {
+//       var elem = this.q1.shift();
+//       this.q2.push(elem)
+//     }
+//     return this.q1.shift();
+//   } else {
+//     while(this.q2.length > 1) {
+//       var elem = this.q2.shift();
+//       this.q1.push(elem)
+//     }
+//     return this.q2.shift()
+//   }
+// };
+
+// /**
+//  * @return {number}
+//  */
+// MyStack.prototype.top = function() {
+//   if(this.q1.length === 0 && this.q2.length === 0) {
+//     return null
+//   }
+//   if(this.q1.length > 0) {
+//     var elem = this.pop()
+//     this.q2.push(elem)
+//     return elem
+//   } else {
+//     var elem = this.pop();
+//     this.q1.push(elem)
+//     return elem
+//   }
+// };
+
+// /**
+//  * @return {boolean}
+//  */
+// MyStack.prototype.empty = function() {
+//   return this.q1.length === 0 && this.q2.length === 0
+// };
+
+var summaryRanges = function(nums) {
+  let res = []
+  let start 
+  let end
+  let range = 1
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i+1] - nums[i] !== 1) {
+      res.push(nums[i].toString())
     }
-    return this.q1.shift();
-  } else {
-    while(this.q2.length > 1) {
-      var elem = this.q2.shift();
-      this.q1.push(elem)
+    if(nums[i+1] - nums[i] === 1) {
+      start = nums[i]
+      while(nums[i+range] - nums[i+range-1] === 1) {
+        end = nums[i+range]
+        range ++
+      }
+      res.push(start + '->' + end)
+      i = i + range - 1
+      range = 1
     }
-    return this.q2.shift()
   }
-};
-
-/**
- * @return {number}
- */
-MyStack.prototype.top = function() {
-  if(this.q1.length === 0 && this.q2.length === 0) {
-    return null
-  }
-  if(this.q1.length > 0) {
-    var elem = this.pop()
-    this.q2.push(elem)
-    return elem
-  } else {
-    var elem = this.pop();
-    this.q1.push(elem)
-    return elem
-  }
-};
-
-/**
- * @return {boolean}
- */
-MyStack.prototype.empty = function() {
-  return this.q1.length === 0 && this.q2.length === 0
+  return res;
 };
 
