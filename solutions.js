@@ -653,21 +653,30 @@
 //   return res;
 // };
 
+// var isAnagram = function(s, t) {
+//   let sortedS = s.split('').sort()
+//   let sortedT = t.split('').sort()
+//   let mapS = {}
+//   let mapT = {}
+//   if(s.length !== t.length) {
+//     return false;
+//   }
+//   for(let i=0; i<s.length; i++) {
+//     mapS[sortedS[i]] = mapS[sortedS[i]] ? mapS[sortedS[i]] + 1 : 1
+//     mapT[sortedT[i]] = mapT[sortedT[i]] ? mapT[sortedT[i]] + 1 : 1
+//   }
+//   return JSON.stringify(mapS) == JSON.stringify(mapT)
+// };
+
 var isAnagram = function(s, t) {
-  let sortedS = s.split('').sort()
-  let sortedT = t.split('').sort()
-  let mapS = {}
-  let mapT = {}
-  if(s.length !== t.length) {
-    return false;
+  let sortedS = s.split('').sort().join('')
+  let sortedT = t.split('').sort().join('')
+  if(sortedS === sortedT) {
+    return true
+  } else {
+    return false
   }
-  for(let i=0; i<s.length; i++) {
-    mapS[sortedS[i]] = mapS[sortedS[i]] ? mapS[sortedS[i]] + 1 : 1
-    mapT[sortedT[i]] = mapT[sortedT[i]] ? mapT[sortedT[i]] + 1 : 1
-  }
-  console.log(mapS, mapT)
-  return JSON.stringify(mapS) == JSON.stringify(mapT)
 };
 
-console.log(isAnagram('anagram', 'nagaram'))
+
 
