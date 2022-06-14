@@ -630,26 +630,44 @@
 //   return this.q1.length === 0 && this.q2.length === 0
 // };
 
-var summaryRanges = function(nums) {
-  let res = []
-  let start 
-  let end
-  let range = 1
-  for(let i=0; i<nums.length; i++) {
-    if(nums[i+1] - nums[i] !== 1) {
-      res.push(nums[i].toString())
-    }
-    if(nums[i+1] - nums[i] === 1) {
-      start = nums[i]
-      while(nums[i+range] - nums[i+range-1] === 1) {
-        end = nums[i+range]
-        range ++
-      }
-      res.push(start + '->' + end)
-      i = i + range - 1
-      range = 1
-    }
+// var summaryRanges = function(nums) {
+//   let res = []
+//   let start 
+//   let end
+//   let range = 1
+//   for(let i=0; i<nums.length; i++) {
+//     if(nums[i+1] - nums[i] !== 1) {
+//       res.push(nums[i].toString())
+//     }
+//     if(nums[i+1] - nums[i] === 1) {
+//       start = nums[i]
+//       while(nums[i+range] - nums[i+range-1] === 1) {
+//         end = nums[i+range]
+//         range ++
+//       }
+//       res.push(start + '->' + end)
+//       i = i + range - 1
+//       range = 1
+//     }
+//   }
+//   return res;
+// };
+
+var isAnagram = function(s, t) {
+  let sortedS = s.split('').sort()
+  let sortedT = t.split('').sort()
+  let mapS = {}
+  let mapT = {}
+  if(s.length !== t.length) {
+    return false;
   }
-  return res;
+  for(let i=0; i<s.length; i++) {
+    mapS[sortedS[i]] = mapS[sortedS[i]] ? mapS[sortedS[i]] + 1 : 1
+    mapT[sortedT[i]] = mapT[sortedT[i]] ? mapT[sortedT[i]] + 1 : 1
+  }
+  console.log(mapS, mapT)
+  return JSON.stringify(mapS) == JSON.stringify(mapT)
 };
+
+console.log(isAnagram('anagram', 'nagaram'))
 
