@@ -678,13 +678,29 @@
 //   }
 // };
 
-var addDigits = function(num) {
-  let arr = num.toString().split('')
-  let red = arr.reduce((prev, curr) => +prev + +curr)
-  while(arr.length > 1) {
-    arr = red.toString().split('')
-    red = arr.reduce((prev, curr) => +prev + +curr)
+// var addDigits = function(num) {
+//   let arr = num.toString().split('')
+//   let red = arr.reduce((prev, curr) => +prev + +curr)
+//   while(arr.length > 1) {
+//     arr = red.toString().split('')
+//     red = arr.reduce((prev, curr) => +prev + +curr)
+//   }
+//   return red
+// };
+
+var missingNumber = function(nums) {
+  let arr = nums.sort((a, b) => a - b)
+  if (arr[0] === 1) {
+    return 0
   }
-  return red
+  if (arr.length === 1) {
+    return arr[0] + 1
+  }
+  for(let i=1; i<nums.length; i++) {
+    if(arr[i]-arr[i-1] !== 1) {
+      return (arr[i]-1)
+    }
+  }
+  return arr[arr.length-1] + 1
 };
 
