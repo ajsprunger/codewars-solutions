@@ -668,15 +668,23 @@
 //   return JSON.stringify(mapS) == JSON.stringify(mapT)
 // };
 
-var isAnagram = function(s, t) {
-  let sortedS = s.split('').sort().join('')
-  let sortedT = t.split('').sort().join('')
-  if(sortedS === sortedT) {
-    return true
-  } else {
-    return false
+// var isAnagram = function(s, t) {
+//   let sortedS = s.split('').sort().join('')
+//   let sortedT = t.split('').sort().join('')
+//   if(sortedS === sortedT) {
+//     return true
+//   } else {
+//     return false
+//   }
+// };
+
+var addDigits = function(num) {
+  let arr = num.toString().split('')
+  let red = arr.reduce((prev, curr) => +prev + +curr)
+  while(arr.length > 1) {
+    arr = red.toString().split('')
+    red = arr.reduce((prev, curr) => +prev + +curr)
   }
+  return red
 };
-
-
 
