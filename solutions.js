@@ -688,19 +688,34 @@
 //   return red
 // };
 
-var missingNumber = function(nums) {
-  let arr = nums.sort((a, b) => a - b)
-  if (arr[0] === 1) {
-    return 0
-  }
-  if (arr.length === 1) {
-    return arr[0] + 1
-  }
-  for(let i=1; i<nums.length; i++) {
-    if(arr[i]-arr[i-1] !== 1) {
-      return (arr[i]-1)
+// var missingNumber = function(nums) {
+//   let arr = nums.sort((a, b) => a - b)
+//   if (arr[0] === 1) {
+//     return 0
+//   }
+//   if (arr.length === 1) {
+//     return arr[0] + 1
+//   }
+//   for(let i=1; i<nums.length; i++) {
+//     if(arr[i]-arr[i-1] !== 1) {
+//       return (arr[i]-1)
+//     }
+//   }
+//   return arr[arr.length-1] + 1
+// };
+
+var moveZeroes = function(nums) {
+  let orig = nums.length
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i] === 0) {
+      nums.splice(i, 1)
+      i--
     }
   }
-  return arr[arr.length-1] + 1
+  while(nums.length<orig) {
+    nums.push(0)
+  }
+  return nums
 };
 
+console.log(moveZeroes([0,0,0,1]))
