@@ -704,18 +704,43 @@
 //   return arr[arr.length-1] + 1
 // };
 
-var moveZeroes = function(nums) {
-  let orig = nums.length
-  for(let i=0; i<nums.length; i++) {
-    if(nums[i] === 0) {
-      nums.splice(i, 1)
-      i--
+// var moveZeroes = function(nums) {
+//   let orig = nums.length
+//   for(let i=0; i<nums.length; i++) {
+//     if(nums[i] === 0) {
+//       nums.splice(i, 1)
+//       i--
+//     }
+//   }
+//   while(nums.length<orig) {
+//     nums.push(0)
+//   }
+//   return nums
+// };
+
+var wordPattern = function(pattern, s) {
+  let patternMap = new Map()
+  let stringMap = new Map()
+  let arrP = pattern.split('')
+  let arrS = s.split(' ')
+  if(arrP.length !== arrS.length){
+    return false
+  }
+  for(let i=0; i<pattern.length; i++){
+    if(patternMap.has(arrP[i]) && patternMap.get(arrP[i]) !== arrS[i]) {
+      return false;
     }
-  }
-  while(nums.length<orig) {
-    nums.push(0)
-  }
-  return nums
+    if(stringMap.has(arrS[i]) && stringMap.get(arrS[i]) !== arrP[i]) {
+      return false;
+    }
+    if(!patternMap.has(arrP[i])){
+      patternMap.set(arrP[i], arrS[i])
+    }
+    if(!stringMap.has(arrS[i])){
+      stringMap.set(arrS[i], arrP[i])
+    }
+  } 
+  return true;
 };
 
-console.log(moveZeroes([0,0,0,1]))
+console.log(wordPattern("abc", "b c a"))
