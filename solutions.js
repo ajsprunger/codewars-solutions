@@ -718,29 +718,35 @@
 //   return nums
 // };
 
-var wordPattern = function(pattern, s) {
-  let patternMap = new Map()
-  let stringMap = new Map()
-  let arrP = pattern.split('')
-  let arrS = s.split(' ')
-  if(arrP.length !== arrS.length){
-    return false
-  }
-  for(let i=0; i<pattern.length; i++){
-    if(patternMap.has(arrP[i]) && patternMap.get(arrP[i]) !== arrS[i]) {
-      return false;
-    }
-    if(stringMap.has(arrS[i]) && stringMap.get(arrS[i]) !== arrP[i]) {
-      return false;
-    }
-    if(!patternMap.has(arrP[i])){
-      patternMap.set(arrP[i], arrS[i])
-    }
-    if(!stringMap.has(arrS[i])){
-      stringMap.set(arrS[i], arrP[i])
-    }
-  } 
-  return true;
+// var wordPattern = function(pattern, s) {
+//   let patternMap = new Map()
+//   let stringMap = new Map()
+//   let arrP = pattern.split('')
+//   let arrS = s.split(' ')
+//   if(arrP.length !== arrS.length){
+//     return false
+//   }
+//   for(let i=0; i<pattern.length; i++){
+//     if(patternMap.has(arrP[i]) && patternMap.get(arrP[i]) !== arrS[i]) {
+//       return false;
+//     }
+//     if(stringMap.has(arrS[i]) && stringMap.get(arrS[i]) !== arrP[i]) {
+//       return false;
+//     }
+//     if(!patternMap.has(arrP[i])){
+//       patternMap.set(arrP[i], arrS[i])
+//     }
+//     if(!stringMap.has(arrS[i])){
+//       stringMap.set(arrS[i], arrP[i])
+//     }
+//   } 
+//   return true;
+// };
+
+var canWinNim = function(n) {
+  return n % 4 ? true : false
 };
 
-console.log(wordPattern("abc", "b c a"))
+
+
+
