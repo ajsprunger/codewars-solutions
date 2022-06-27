@@ -747,33 +747,58 @@
 //   return n % 4 ? true : false
 // };
 
-/**
- * @param {number[]} nums
- */
-var NumArray = function(nums) {
-  this.nums = nums;
+// /**
+//  * @param {number[]} nums
+//  */
+// var NumArray = function(nums) {
+//   this.nums = nums;
+// };
+
+// /** 
+//  * @param {number} left 
+//  * @param {number} right
+//  * @return {number}
+//  */
+// NumArray.prototype.sumRange = function(left, right) {
+//   let sum = 0
+//   for(let i=left; i<=right; i++) {
+//     sum += this.nums[i]
+//   }
+//   return sum
+// };
+
+// /** 
+//  * Your NumArray object will be instantiated and called as such:
+//  * var obj = new NumArray(nums)
+//  * var param_1 = obj.sumRange(left,right)
+//  */
+
+// var obj = new NumArray([-2, 0, 3, -5, 2, -1])
+// var param_1 = obj.sumRange([0,2])
+
+// obj.sumRange(0, 2)
+
+// var isPowerOfThree = function(n) {
+//   if(n % 3 === 0) {
+//     if(n/3 === 1) {
+//       return true;
+//     } else {
+//       n /= 3
+//       return isPowerOfThree(n)
+//     }
+//   }
+//   return false;
+// };
+
+// var isPowerOfThree = function(n) {
+//   while(n % 3 === 0) {
+//     n /= 3
+//   }
+//   return n === 1
+// };
+
+var isPowerOfThree = function(n) {
+  return n > 0 && 1162261467 % n === 0
 };
 
-/** 
- * @param {number} left 
- * @param {number} right
- * @return {number}
- */
-NumArray.prototype.sumRange = function(left, right) {
-  let sum = 0
-  for(let i=left; i<=right; i++) {
-    sum += this.nums[i]
-  }
-  return sum
-};
-
-/** 
- * Your NumArray object will be instantiated and called as such:
- * var obj = new NumArray(nums)
- * var param_1 = obj.sumRange(left,right)
- */
-
-var obj = new NumArray([-2, 0, 3, -5, 2, -1])
-var param_1 = obj.sumRange([0,2])
-
-obj.sumRange(0, 2)
+console.log(isPowerOfThree(27))
