@@ -797,8 +797,20 @@
 //   return n === 1
 // };
 
-var isPowerOfThree = function(n) {
-  return n > 0 && 1162261467 % n === 0
+// var isPowerOfThree = function(n) {
+//   return n > 0 && 1162261467 % n === 0
+// };
+
+var countBits = function(n) {
+  res = [0]
+  let count = function(num) {
+    let binary = num.toString(2)
+    return [...binary].filter(el => el === '1').length
+  }
+  for(let i=1; i<=n; i++) {
+    res.push(count(i))
+  }
+  return res;
 };
 
-console.log(isPowerOfThree(27))
+console.log(countBits(2))
