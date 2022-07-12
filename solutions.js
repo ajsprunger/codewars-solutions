@@ -801,16 +801,18 @@
 //   return n > 0 && 1162261467 % n === 0
 // };
 
-var countBits = function(n) {
-  res = [0]
-  let count = function(num) {
-    let binary = num.toString(2)
-    return [...binary].filter(el => el === '1').length
-  }
-  for(let i=1; i<=n; i++) {
-    res.push(count(i))
-  }
-  return res;
-};
+// var countBits = function(n) {
+//   res = [0]
+//   let count = function(num) {
+//     let binary = num.toString(2)
+//     return [...binary].filter(el => el === '1').length
+//   }
+//   for(let i=1; i<=n; i++) {
+//     res.push(count(i))
+//   }
+//   return res;
+// };
 
-console.log(countBits(2))
+var isPowerOfFour = function(n) {
+  return n > 0 && (n & (n - 1)) === 0 && (n & 0x55555555) !== 0;
+};
