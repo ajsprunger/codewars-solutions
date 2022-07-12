@@ -813,6 +813,23 @@
 //   return res;
 // };
 
-var isPowerOfFour = function(n) {
-  return n > 0 && (n & (n - 1)) === 0 && (n & 0x55555555) !== 0;
+// var isPowerOfFour = function(n) {
+//   return n > 0 && (n & (n - 1)) === 0 && (n & 0x55555555) !== 0;
+// };
+
+// var reverseString = function(s) {
+//   for(let i=0; i<s.length-1; i++) {
+//     s.splice(i, 0, s.pop())
+//   }
+//   return s
+// };
+
+var reverseString = function(s) {
+  for(let i=0; i<Math.floor(s.length / 2); i++) {
+    var temp = s[i];
+    s[i] = s[s.length-1-i];
+    s[s.length-1-i] = temp
+  }
 };
+
+console.log(reverseString(["h","e","l","l","o"]))
