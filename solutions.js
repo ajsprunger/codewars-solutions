@@ -824,12 +824,24 @@
 //   return s
 // };
 
-var reverseString = function(s) {
-  for(let i=0; i<Math.floor(s.length / 2); i++) {
-    var temp = s[i];
-    s[i] = s[s.length-1-i];
-    s[s.length-1-i] = temp
+// var reverseString = function(s) {
+//   for(let i=0; i<Math.floor(s.length / 2); i++) {
+//     var temp = s[i];
+//     s[i] = s[s.length-1-i];
+//     s[s.length-1-i] = temp
+//   }
+// };
+
+var intersection = function(nums1, nums2) {
+  let output = []
+  let short = nums1.length > nums2.length ? nums2 : nums1
+  let long = nums1.length > nums2.length ? nums1 : nums2
+  for(let i=0; i<short.length; i++) {
+    if(long.includes(short[i]) && !output.includes(short[i])) {
+      output.push(short[i])
+    }
   }
+  return output
 };
 
-console.log(reverseString(["h","e","l","l","o"]))
+console.log(intersection([1, 2, 3, 4], [5, 6, 2, 4]))
