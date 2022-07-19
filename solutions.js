@@ -844,19 +844,34 @@
 //   return output
 // };
 
-var intersect = function(nums1, nums2) {
-  let output = []
-  let short = nums1.length > nums2.length ? nums2 : nums1
-  let long = nums1.length > nums2.length ? nums1 : nums2
-  for(let i=0; i<short.length; i++) {
-    let idx = long.indexOf(short[i])
-    if (idx >= 0) {
-      output.push(short[i])
-      long.splice(idx, 1)
+// var intersect = function(nums1, nums2) {
+//   let output = []
+//   let short = nums1.length > nums2.length ? nums2 : nums1
+//   let long = nums1.length > nums2.length ? nums1 : nums2
+//   for(let i=0; i<short.length; i++) {
+//     let idx = long.indexOf(short[i])
+//     if (idx >= 0) {
+//       output.push(short[i])
+//       long.splice(idx, 1)
+//     }
+//   }
+//   return output
+// };
+
+var isPerfectSquare = function(num) {
+  let left = 1, right = num;
+  while(left <= right) {
+    let mid = parseInt((left+right ) / 2)
+    if(mid*mid == num){
+      return true;
+    }
+    if(mid*mid < x) {
+      left = mid + 1
+    }
+    else {
+      right = mid - 1
     }
   }
-  return output
+  return false
 };
-
-
 
