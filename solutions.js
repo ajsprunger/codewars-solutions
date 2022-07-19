@@ -832,16 +832,31 @@
 //   }
 // };
 
-var intersection = function(nums1, nums2) {
+// var intersection = function(nums1, nums2) {
+//   let output = []
+//   let short = nums1.length > nums2.length ? nums2 : nums1
+//   let long = nums1.length > nums2.length ? nums1 : nums2
+//   for(let i=0; i<short.length; i++) {
+//     if(long.includes(short[i]) && !output.includes(short[i])) {
+//       output.push(short[i])
+//     }
+//   }
+//   return output
+// };
+
+var intersect = function(nums1, nums2) {
   let output = []
   let short = nums1.length > nums2.length ? nums2 : nums1
   let long = nums1.length > nums2.length ? nums1 : nums2
   for(let i=0; i<short.length; i++) {
-    if(long.includes(short[i]) && !output.includes(short[i])) {
+    let idx = long.indexOf(short[i])
+    if (idx >= 0) {
       output.push(short[i])
+      long.splice(idx, 1)
     }
   }
   return output
 };
 
-console.log(intersection([1, 2, 3, 4], [5, 6, 2, 4]))
+
+
