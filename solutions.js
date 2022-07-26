@@ -875,16 +875,33 @@
 //   return false
 // };
 
-var guessNumber = function(n) {
-  let left = 1
-  let right = n
-  while(left < right) {
-    let mid = Math.floor((left + right) / 2)
-    let current = guess(mid)
-    if (current === 0) return mid
-    if (current === -1) right = mid
-    if (current === 1) left = mid+1
-  }
-  return left
-};
+// var guessNumber = function(n) {
+//   let left = 1
+//   let right = n
+//   while(left < right) {
+//     let mid = Math.floor((left + right) / 2)
+//     let current = guess(mid)
+//     if (current === 0) return mid
+//     if (current === -1) right = mid
+//     if (current === 1) left = mid+1
+//   }
+//   return left
+// };
 
+var generateParenthesis = function(n) {
+  const result = [];
+  generator('', 0, 0)
+  function generator(str, left, right) {
+    if(left === n && right === n) {
+      result.push(str);
+      return;
+    }
+    if(left !== n) {
+      generator(str + '(', left + 1, right);
+    }
+    if(left > right) {
+      generator(str + ')', left, right + 1)
+    }
+  }
+  return result;
+};
