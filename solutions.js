@@ -888,20 +888,33 @@
 //   return left
 // };
 
-var generateParenthesis = function(n) {
-  const result = [];
-  generator('', 0, 0)
-  function generator(str, left, right) {
-    if(left === n && right === n) {
-      result.push(str);
-      return;
-    }
-    if(left !== n) {
-      generator(str + '(', left + 1, right);
-    }
-    if(left > right) {
-      generator(str + ')', left, right + 1)
+// var generateParenthesis = function(n) {
+//   const result = [];
+//   generator('', 0, 0)
+//   function generator(str, left, right) {
+//     if(left === n && right === n) {
+//       result.push(str);
+//       return;
+//     }
+//     if(left !== n) {
+//       generator(str + '(', left + 1, right);
+//     }
+//     if(left > right) {
+//       generator(str + ')', left, right + 1)
+//     }
+//   }
+//   return result;
+// };
+
+var hammingDistance = function(x, y) {
+  let xBin = x.toString(2).padStart(32, '0')
+  let yBin = y.toString(2).padStart(32, '0')
+  let count = 0
+  for(let i=0; i<xBin.length; i++) {
+    if(xBin[i] !== yBin[i]) {
+      count++
     }
   }
-  return result;
+  return count;
 };
+
