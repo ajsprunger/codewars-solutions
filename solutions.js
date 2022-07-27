@@ -906,13 +906,36 @@
 //   return result;
 // };
 
-var hammingDistance = function(x, y) {
-  let xBin = x.toString(2).padStart(32, '0')
-  let yBin = y.toString(2).padStart(32, '0')
+// var hammingDistance = function(x, y) {
+//   let xBin = x.toString(2).padStart(32, '0')
+//   let yBin = y.toString(2).padStart(32, '0')
+//   let count = 0
+//   for(let i=0; i<xBin.length; i++) {
+//     if(xBin[i] !== yBin[i]) {
+//       count++
+//     }
+//   }
+//   return count;
+// };
+
+var islandPerimeter = function(grid) {
   let count = 0
-  for(let i=0; i<xBin.length; i++) {
-    if(xBin[i] !== yBin[i]) {
-      count++
+  for(let i=0; i<grid.length; i++){
+    for(let j=0; j<grid[0].length; j++){
+      if(grid[i][j] == 1){
+        if(!grid[i-1] || !grid[i-1][j]) {
+          count++
+        }
+        if(!grid[i+1] || !grid[i+1][j]) {
+          count++
+        }
+        if(!grid[i][j-1]) {
+          count++
+        }
+        if(!grid[i][j+1]) {
+          count++
+        }
+      }
     }
   }
   return count;
