@@ -941,17 +941,33 @@
 //   return count;
 // };
 
-var findComplement = function(num) {
-  let bin = num.toString(2).split('')
-  for(let i=0; i<bin.length; i++) {
-    if(bin[i] == 1) {
-      bin[i] = 0
-      console.log(bin)
-    } else {
-      bin[i] = 1
-      console.log(bin)
+// var findComplement = function(num) {
+//   let bin = num.toString(2).split('')
+//   for(let i=0; i<bin.length; i++) {
+//     if(bin[i] == 1) {
+//       bin[i] = 0
+//       console.log(bin)
+//     } else {
+//       bin[i] = 1
+//       console.log(bin)
+//     }
+//   }
+//   return parseInt(bin.join(''), 2)
+// };
+
+var findMaxConsecutiveOnes = function(nums) {
+  let max = 0
+  let count = 0
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i] == 1) {
+      count++;
+    }
+    if(nums[i] == 0) {
+      count = 0;
+    }
+    if(count > max) {
+      max = count;
     }
   }
-  return parseInt(bin.join(''), 2)
+  return max;
 };
-
