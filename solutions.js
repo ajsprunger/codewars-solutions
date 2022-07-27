@@ -955,19 +955,33 @@
 //   return parseInt(bin.join(''), 2)
 // };
 
-var findMaxConsecutiveOnes = function(nums) {
-  let max = 0
+// var findMaxConsecutiveOnes = function(nums) {
+//   let max = 0
+//   let count = 0
+//   for(let i=0; i<nums.length; i++) {
+//     if(nums[i] == 1) {
+//       count++;
+//     }
+//     if(nums[i] == 0) {
+//       count = 0;
+//     }
+//     if(count > max) {
+//       max = count;
+//     }
+//   }
+//   return max;
+// };
+
+var findPoisonedDuration = function(timeSeries, duration) {
   let count = 0
-  for(let i=0; i<nums.length; i++) {
-    if(nums[i] == 1) {
-      count++;
+  for(let i=0; i<timeSeries.length; i++) {
+    console.log(count)
+    if(timeSeries[i+1] - timeSeries[i] >= duration || !timeSeries[i+1]) {
+      count = count + duration;
     }
-    if(nums[i] == 0) {
-      count = 0;
-    }
-    if(count > max) {
-      max = count;
+    if(timeSeries[i+1] - timeSeries[i] < duration) {
+      count = count + timeSeries[i+1] - timeSeries[i]
     }
   }
-  return max;
+  return count;
 };
