@@ -918,26 +918,40 @@
 //   return count;
 // };
 
-var islandPerimeter = function(grid) {
-  let count = 0
-  for(let i=0; i<grid.length; i++){
-    for(let j=0; j<grid[0].length; j++){
-      if(grid[i][j] == 1){
-        if(!grid[i-1] || !grid[i-1][j]) {
-          count++
-        }
-        if(!grid[i+1] || !grid[i+1][j]) {
-          count++
-        }
-        if(!grid[i][j-1]) {
-          count++
-        }
-        if(!grid[i][j+1]) {
-          count++
-        }
-      }
+// var islandPerimeter = function(grid) {
+//   let count = 0
+//   for(let i=0; i<grid.length; i++){
+//     for(let j=0; j<grid[0].length; j++){
+//       if(grid[i][j] == 1){
+//         if(!grid[i-1] || !grid[i-1][j]) {
+//           count++
+//         }
+//         if(!grid[i+1] || !grid[i+1][j]) {
+//           count++
+//         }
+//         if(!grid[i][j-1]) {
+//           count++
+//         }
+//         if(!grid[i][j+1]) {
+//           count++
+//         }
+//       }
+//     }
+//   }
+//   return count;
+// };
+
+var findComplement = function(num) {
+  let bin = num.toString(2).split('')
+  for(let i=0; i<bin.length; i++) {
+    if(bin[i] == 1) {
+      bin[i] = 0
+      console.log(bin)
+    } else {
+      bin[i] = 1
+      console.log(bin)
     }
   }
-  return count;
+  return parseInt(bin.join(''), 2)
 };
 
