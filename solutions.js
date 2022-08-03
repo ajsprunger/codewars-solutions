@@ -1006,14 +1006,12 @@
 // };
 
 var checkPerfectNumber = function(num) {
-  let divisors = []
+  let sum = 0
   for(let i=0; i<=(num/2); i++) {
     if(num % i === 0) {
-      divisors.push(i)
+      sum += i
     }
   }
-  return divisors.reduce((prev, curr) => prev + curr
-  ) == num
+  return sum == num
 };
 
-console.log(checkPerfectNumber(28))
