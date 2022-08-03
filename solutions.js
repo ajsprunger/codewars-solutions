@@ -986,22 +986,34 @@
 //   return count;
 // };
 
-var nextGreaterElement = function(nums1, nums2) {
-  let output = []
-  for(let i=0; i<nums1.length; i++) {
-    let idx = nums2.indexOf(nums1[i])+1
-    let hasGreater = false;
-    for(let j=idx; j<nums2.length; j++) {
-      if(nums2[j] > nums1[i]) {
-        output.push(nums2[j])
-        hasGreater = true;
-        break;
-      }
-    }
-    if(!hasGreater) {
-      output.push(-1)
+// var nextGreaterElement = function(nums1, nums2) {
+//   let output = []
+//   for(let i=0; i<nums1.length; i++) {
+//     let idx = nums2.indexOf(nums1[i])+1
+//     let hasGreater = false;
+//     for(let j=idx; j<nums2.length; j++) {
+//       if(nums2[j] > nums1[i]) {
+//         output.push(nums2[j])
+//         hasGreater = true;
+//         break;
+//       }
+//     }
+//     if(!hasGreater) {
+//       output.push(-1)
+//     }
+//   }
+//   return output;
+// };
+
+var checkPerfectNumber = function(num) {
+  let divisors = []
+  for(let i=0; i<=(num/2); i++) {
+    if(num % i === 0) {
+      divisors.push(i)
     }
   }
-  return output;
+  return divisors.reduce((prev, curr) => prev + curr
+  ) == num
 };
 
+console.log(checkPerfectNumber(28))
