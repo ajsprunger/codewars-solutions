@@ -1005,13 +1005,26 @@
 //   return output;
 // };
 
-var checkPerfectNumber = function(num) {
-  let sum = 0
-  for(let i=0; i<=(num/2); i++) {
-    if(num % i === 0) {
-      sum += i
-    }
-  }
-  return sum == num
-};
+// var checkPerfectNumber = function(num) {
+//   let sum = 0
+//   for(let i=0; i<=(num/2); i++) {
+//     if(num % i === 0) {
+//       sum += i
+//     }
+//   }
+//   return sum == num
+// };
 
+var detectCapitalUse = function(word) {
+  let lower = word.toLowerCase()
+  let upper = word.toUpperCase()
+  let firstUpper = word[0] === upper[0];
+  let restLower = word.slice(1) === lower.slice(1);
+  if(word === upper || word === lower) {
+    return true;
+  }
+  else if(firstUpper && restLower) {
+    return true;
+  }
+  else return false;
+};
