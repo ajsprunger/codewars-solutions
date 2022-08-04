@@ -1029,10 +1029,25 @@
 //   else return false;
 // };
 
-var findLUSlength = function(a, b) {
-  if(a == b) {
-    return -1
+// var findLUSlength = function(a, b) {
+//   if(a == b) {
+//     return -1
+//   }
+//   return Math.max(a.length, b.length)
+// };
+
+var reverseStr = function(s, k) {
+  let stringArr = s.split('')
+  for(let start=0; start<s.length; start += 2*k) {
+    let i = start;
+    let j = Math.min(start + k - 1, stringArr.length - 1);
+    while(i<j) {
+      let tmp = stringArr[i];
+      stringArr[i++] = stringArr[j];
+      stringArr[j--] = tmp;
+    }
   }
-  return Math.max(a.length, b.length)
+  return stringArr.join('');
 };
 
+console.log(reverseStr("abcdefg", 2))
