@@ -1050,17 +1050,39 @@
 //   return stringArr.join('');
 // };
 
-var diameterOfBinaryTree = function(root) {
-  const helper = function(root) {
-    if(!root) {
-      return 0;
+// var diameterOfBinaryTree = function(root) {
+//   const helper = function(root) {
+//     if(!root) {
+//       return 0;
+//     }
+//     const left = helper(root.left);
+//     const right = helper(root.right);
+//     max = Math.max(max, 1 + left + right);
+//     return 1 + Math.max(left, right);
+//   };
+//   let max = 0
+//   helper(root);
+//   return max;
+// };
+
+var checkRecord = function(s) {
+  let lates = 0
+  let absences = 0
+  let tooLate = false;
+  for(let i=0; i<s.length; i++) {
+    if(s[i] == "A") {
+      absences++
+      lates = 0
     }
-    const left = helper(root.left);
-    const right = helper(root.right);
-    max = Math.max(max, 1 + left + right);
-    return 1 + Math.max(left, right);
-  };
-  let max = 0
-  helper(root);
-  return max;
+    if(s[i] == "L") {
+      lates++
+      if(lates > 2) {
+        tooLate = true;
+      }
+    }
+    else {
+      lates = 0
+    }
+  }
+  return tooLate == false && absences < 2
 };
