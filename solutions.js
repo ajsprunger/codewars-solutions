@@ -1065,24 +1065,34 @@
 //   return max;
 // };
 
-var checkRecord = function(s) {
-  let lates = 0
-  let absences = 0
-  let tooLate = false;
-  for(let i=0; i<s.length; i++) {
-    if(s[i] == "A") {
-      absences++
-      lates = 0
-    }
-    if(s[i] == "L") {
-      lates++
-      if(lates > 2) {
-        tooLate = true;
-      }
-    }
-    else {
-      lates = 0
-    }
+// var checkRecord = function(s) {
+//   let lates = 0
+//   let absences = 0
+//   let tooLate = false;
+//   for(let i=0; i<s.length; i++) {
+//     if(s[i] == "A") {
+//       absences++
+//       lates = 0
+//     }
+//     if(s[i] == "L") {
+//       lates++
+//       if(lates > 2) {
+//         tooLate = true;
+//       }
+//     }
+//     else {
+//       lates = 0
+//     }
+//   }
+//   return tooLate == false && absences < 2
+// };
+
+var reverseWords = function(s) {
+  let arr = s.split(' ')
+  let output = []
+  for(let i=0; i<arr.length; i++) {
+    output.push(arr[i].split('').reverse().join(''))
   }
-  return tooLate == false && absences < 2
+  return output.join(' ');
 };
+
