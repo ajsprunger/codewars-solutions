@@ -1087,12 +1087,25 @@
 //   return tooLate == false && absences < 2
 // };
 
-var reverseWords = function(s) {
-  let arr = s.split(' ')
-  let output = []
-  for(let i=0; i<arr.length; i++) {
-    output.push(arr[i].split('').reverse().join(''))
+// var reverseWords = function(s) {
+//   let arr = s.split(' ')
+//   let output = []
+//   for(let i=0; i<arr.length; i++) {
+//     output.push(arr[i].split('').reverse().join(''))
+//   }
+//   return output.join(' ');
+// };
+
+var arrayPairSum = function(nums) {
+  nums.sort((a,b) => a - b)
+  let sum = 0
+  for(let i=0; i<nums.length; i+=2) {
+    sum += nums[i]
   }
-  return output.join(' ');
+  return sum;
 };
+
+
+
+
 
