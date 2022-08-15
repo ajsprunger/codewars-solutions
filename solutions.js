@@ -1096,16 +1096,30 @@
 //   return output.join(' ');
 // };
 
-var arrayPairSum = function(nums) {
-  nums.sort((a,b) => a - b)
-  let sum = 0
-  for(let i=0; i<nums.length; i+=2) {
-    sum += nums[i]
+// var arrayPairSum = function(nums) {
+//   nums.sort((a,b) => a - b)
+//   let sum = 0
+//   for(let i=0; i<nums.length; i+=2) {
+//     sum += nums[i]
+//   }
+//   return sum;
+// };
+
+var findTilt = function(root) {
+  let totalTilt = 0;
+  let sum = (node) => {
+    if(node === null) {
+      return 0;
+    }
+    var left = sum(node.left)
+    var right = sum(node.right)
+    var tilt = Math.abs(left - right)
+    totalTilt += tilt;
+    return node.val + left + right
   }
-  return sum;
+  sum(node);
+  return totalTilt;
 };
-
-
 
 
 
