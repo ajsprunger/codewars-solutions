@@ -1105,21 +1105,36 @@
 //   return sum;
 // };
 
-var findTilt = function(root) {
-  let totalTilt = 0;
-  let sum = (node) => {
-    if(node === null) {
-      return 0;
-    }
-    var left = sum(node.left)
-    var right = sum(node.right)
-    var tilt = Math.abs(left - right)
-    totalTilt += tilt;
-    return node.val + left + right
+// var findTilt = function(root) {
+//   let totalTilt = 0;
+//   let sum = (node) => {
+//     if(node === null) {
+//       return 0;
+//     }
+//     var left = sum(node.left)
+//     var right = sum(node.right)
+//     var tilt = Math.abs(left - right)
+//     totalTilt += tilt;
+//     return node.val + left + right
+//   }
+//   sum(node);
+//   return totalTilt;
+// };
+
+var matrixReshape = function(mat, r, c) {
+  if(mat.length * mat[0].length !== r*c) {
+    return mat;
   }
-  sum(node);
-  return totalTilt;
+  let output = []
+  mat = mat.flat();
+  for(let i=0, j=0; i<r; i++) {
+    let temp = [];
+    for(let k=0; k<c; k++) {
+      temp.push(mat[j])
+      j++;
+    }
+    output.push(temp)
+  }
+  return output;
 };
-
-
 
