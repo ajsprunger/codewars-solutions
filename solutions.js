@@ -1138,9 +1138,21 @@
 //   return output;
 // };
 
-var distributeCandies = function(candyType) {
-  const unique = new Set(candyType).size;
-  const totalTypes = (candyType.length / 2)
-  return totalTypes > unique ? unique : totalTypes
-};
+// var distributeCandies = function(candyType) {
+//   const unique = new Set(candyType).size;
+//   const totalTypes = (candyType.length / 2)
+//   return totalTypes > unique ? unique : totalTypes
+// };
 
+var findLHS = function(nums) {
+  let map = new Map(), ans = 0
+  for(let num of nums) {
+    map.set(num, (map.get(num) || 0) + 1)
+  }
+  for(let [key, val] of map) {
+    if(map.has(~~key+1)) {
+      ans = Math.max(ans, val + map.get(~~key+1))
+    }
+  }
+  return ans
+};
