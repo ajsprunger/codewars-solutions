@@ -1121,20 +1121,26 @@
 //   return totalTilt;
 // };
 
-var matrixReshape = function(mat, r, c) {
-  if(mat.length * mat[0].length !== r*c) {
-    return mat;
-  }
-  let output = []
-  mat = mat.flat();
-  for(let i=0, j=0; i<r; i++) {
-    let temp = [];
-    for(let k=0; k<c; k++) {
-      temp.push(mat[j])
-      j++;
-    }
-    output.push(temp)
-  }
-  return output;
+// var matrixReshape = function(mat, r, c) {
+//   if(mat.length * mat[0].length !== r*c) {
+//     return mat;
+//   }
+//   let output = []
+//   mat = mat.flat();
+//   for(let i=0, j=0; i<r; i++) {
+//     let temp = [];
+//     for(let k=0; k<c; k++) {
+//       temp.push(mat[j])
+//       j++;
+//     }
+//     output.push(temp)
+//   }
+//   return output;
+// };
+
+var distributeCandies = function(candyType) {
+  const unique = new Set(candyType).size;
+  const totalTypes = (candyType.length / 2)
+  return totalTypes > unique ? unique : totalTypes
 };
 
