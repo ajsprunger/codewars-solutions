@@ -1157,32 +1157,51 @@
 //   return ans
 // };
 
-// Memory Efficient
-var maxCount = function(m, n, ops) {
-  if (!ops.length) return m * n
-  let X = Infinity
-  let Y = Infinity
-  for(let i=0; i<ops.length; i++) {
-    X = Math.min(X, ops[i][0])
-    Y = Math.min(Y, ops[i][1])
+// // Memory Efficient
+// var maxCount = function(m, n, ops) {
+//   if (!ops.length) return m * n
+//   let X = Infinity
+//   let Y = Infinity
+//   for(let i=0; i<ops.length; i++) {
+//     X = Math.min(X, ops[i][0])
+//     Y = Math.min(Y, ops[i][1])
+//   }
+//   return X * Y;
+// };
+
+// // Speed Efficient
+// var maxCount = function(m, n, ops) {
+//   if (!ops.length) return m * n
+//   let X = []
+//   let Y = []
+//   for(let i=0; i<ops.length; i++) {
+//     X.push(ops[i][0])
+//     Y.push(ops[i][1])
+//   }
+//   let minX = Math.min(...X)
+//   let minY = Math.min(...Y)
+//   return minX * minY;
+// };
+
+var findRestaurant = function(list1, list2) {
+  let leastIndexSum = Infinity
+  let choice = []
+  let shortList 
+  let longList 
+  list1.length <= list2.length ? shortList = list1 : shortList = list2
+  list1.length > list2.length ? longList = list1 : longList = list2
+  for(let i=0; i<shortList.length; i++) {
+    if(longList.indexOf(shortList[i]) > -1) {
+      let currentSum = longList.indexOf(shortList[i]) + i
+      if(currentSum == leastIndexSum) {
+        choice.push(shortList[i])
+      }
+      if(currentSum < leastIndexSum) {
+        leastIndexSum = currentSum;
+        choice = [shortList[i]]
+      }
+    }
   }
-  return X * Y;
+  return choice;
 };
-
-// Speed Efficient
-var maxCount = function(m, n, ops) {
-  if (!ops.length) return m * n
-  let X = []
-  let Y = []
-  for(let i=0; i<ops.length; i++) {
-    X.push(ops[i][0])
-    Y.push(ops[i][1])
-  }
-  let minX = Math.min(...X)
-  let minY = Math.min(...Y)
-  return minX * minY;
-};
-
-console.log(maxCount(3, 4, [[2,2],[3,3]]))
-
 
