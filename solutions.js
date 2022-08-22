@@ -1183,25 +1183,39 @@
 //   return minX * minY;
 // };
 
-var findRestaurant = function(list1, list2) {
-  let leastIndexSum = Infinity
-  let choice = []
-  let shortList 
-  let longList 
-  list1.length <= list2.length ? shortList = list1 : shortList = list2
-  list1.length > list2.length ? longList = list1 : longList = list2
-  for(let i=0; i<shortList.length; i++) {
-    if(longList.indexOf(shortList[i]) > -1) {
-      let currentSum = longList.indexOf(shortList[i]) + i
-      if(currentSum == leastIndexSum) {
-        choice.push(shortList[i])
-      }
-      if(currentSum < leastIndexSum) {
-        leastIndexSum = currentSum;
-        choice = [shortList[i]]
-      }
+// var findRestaurant = function(list1, list2) {
+//   let leastIndexSum = Infinity
+//   let choice = []
+//   let shortList 
+//   let longList 
+//   list1.length <= list2.length ? shortList = list1 : shortList = list2
+//   list1.length > list2.length ? longList = list1 : longList = list2
+//   for(let i=0; i<shortList.length; i++) {
+//     if(longList.indexOf(shortList[i]) > -1) {
+//       let currentSum = longList.indexOf(shortList[i]) + i
+//       if(currentSum == leastIndexSum) {
+//         choice.push(shortList[i])
+//       }
+//       if(currentSum < leastIndexSum) {
+//         leastIndexSum = currentSum;
+//         choice = [shortList[i]]
+//       }
+//     }
+//   }
+//   return choice;
+// };
+
+var canPlaceFlowers = function(flowerbed, n) {
+  if(n == 0) return true;
+  flowerbed.unshift(0)
+  flowerbed.push(0)
+  let count = 0
+  for(let i=0; i<flowerbed.length - 2; i++) {
+    if(flowerbed[i] == 0 && flowerbed[i+1] == 0 && flowerbed[i+2] == 0) {
+      count++
+      if(count == n) return true;
+      i++
     }
   }
-  return choice;
+  return false;
 };
-
