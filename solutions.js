@@ -1144,15 +1144,32 @@
 //   return totalTypes > unique ? unique : totalTypes
 // };
 
-var findLHS = function(nums) {
-  let map = new Map(), ans = 0
-  for(let num of nums) {
-    map.set(num, (map.get(num) || 0) + 1)
+// var findLHS = function(nums) {
+//   let map = new Map(), ans = 0
+//   for(let num of nums) {
+//     map.set(num, (map.get(num) || 0) + 1)
+//   }
+//   for(let [key, val] of map) {
+//     if(map.has(~~key+1)) {
+//       ans = Math.max(ans, val + map.get(~~key+1))
+//     }
+//   }
+//   return ans
+// };
+
+var maxCount = function(m, n, ops) {
+  if (!ops.length) return m * n
+  let X = []
+  let Y = []
+  for(let i=0; i<ops.length; i++) {
+    X.push(ops[i][0])
+    Y.push(ops[i][1])
   }
-  for(let [key, val] of map) {
-    if(map.has(~~key+1)) {
-      ans = Math.max(ans, val + map.get(~~key+1))
-    }
-  }
-  return ans
+  let minX = Math.min(...X)
+  let minY = Math.min(...Y)
+  return minX * minY;
 };
+
+console.log(maxCount(3, 4, [[2,2],[3,3]]))
+
+
