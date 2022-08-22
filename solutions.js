@@ -1157,6 +1157,19 @@
 //   return ans
 // };
 
+// Memory Efficient
+var maxCount = function(m, n, ops) {
+  if (!ops.length) return m * n
+  let X = Infinity
+  let Y = Infinity
+  for(let i=0; i<ops.length; i++) {
+    X = Math.min(X, ops[i][0])
+    Y = Math.min(Y, ops[i][1])
+  }
+  return X * Y;
+};
+
+// Speed Efficient
 var maxCount = function(m, n, ops) {
   if (!ops.length) return m * n
   let X = []
