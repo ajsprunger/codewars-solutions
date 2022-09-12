@@ -1220,13 +1220,20 @@
 //   return false;
 // };
 
-var maximumProduct = function(nums) {
-  if (nums.length == 3){
-    return nums.reduce((prev, curr) => prev * curr
-  )} 
-  let sort = nums.sort((a, b) => a - b)
-  let x = sort[sort.length-1] * sort[sort.length-2] * sort[sort.length-3]
-  let y = sort[0] * sort[1] * sort[sort.length-1]
-  return Math.max(x, y)
-};
+// var maximumProduct = function(nums) {
+//   if (nums.length == 3){
+//     return nums.reduce((prev, curr) => prev * curr
+//   )} 
+//   let sort = nums.sort((a, b) => a - b)
+//   let x = sort[sort.length-1] * sort[sort.length-2] * sort[sort.length-3]
+//   let y = sort[0] * sort[1] * sort[sort.length-1]
+//   return Math.max(x, y)
+// };
 
+var mergeTrees = function(root1, root2) {
+  if(!root1 || !root2) return root1 || root2
+  root1.val += root2.val
+  root1.left = mergeTrees(root1.left, root2.left)
+  root1.right = mergeTrees(root1.right, root2.right)
+  return root1
+};
