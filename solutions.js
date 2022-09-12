@@ -1205,17 +1205,28 @@
 //   return choice;
 // };
 
-var canPlaceFlowers = function(flowerbed, n) {
-  if(n == 0) return true;
-  flowerbed.unshift(0)
-  flowerbed.push(0)
-  let count = 0
-  for(let i=0; i<flowerbed.length - 2; i++) {
-    if(flowerbed[i] == 0 && flowerbed[i+1] == 0 && flowerbed[i+2] == 0) {
-      count++
-      if(count == n) return true;
-      i++
-    }
-  }
-  return false;
+// var canPlaceFlowers = function(flowerbed, n) {
+//   if(n == 0) return true;
+//   flowerbed.unshift(0)
+//   flowerbed.push(0)
+//   let count = 0
+//   for(let i=0; i<flowerbed.length - 2; i++) {
+//     if(flowerbed[i] == 0 && flowerbed[i+1] == 0 && flowerbed[i+2] == 0) {
+//       count++
+//       if(count == n) return true;
+//       i++
+//     }
+//   }
+//   return false;
+// };
+
+var maximumProduct = function(nums) {
+  if (nums.length == 3){
+    return nums.reduce((prev, curr) => prev * curr
+  )} 
+  let sort = nums.sort((a, b) => a - b)
+  let x = sort[sort.length-1] * sort[sort.length-2] * sort[sort.length-3]
+  let y = sort[0] * sort[1] * sort[sort.length-1]
+  return Math.max(x, y)
 };
+
